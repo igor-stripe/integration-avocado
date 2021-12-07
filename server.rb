@@ -1,5 +1,6 @@
 require 'stripe'
 require 'sinatra'
+require 'byebug'
 
 # This is your test secret API key.
 Stripe.api_key = 'sk_test_51K2MeZC6huK4bAvbXxCfLxq5YgJ5lA6cPeoBrcmI9ighc7zQMzuDnEPLGkBfyii7GHikRDzOaO2jOKLB38FBnZ4F00cVmHU9tb'
@@ -20,7 +21,8 @@ post '/create-checkout-session' do
       mode: 'subscription',
       line_items: [{
         quantity: 1,
-        price: prices.data[0].id
+        price: "price_1K4CE3C6huK4bAvbUMJ6xWrh",
+        adjustable_quantity: { enabled: true, },
       }],
       success_url: YOUR_DOMAIN + '/success.html?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: YOUR_DOMAIN + '/cancel.html',
